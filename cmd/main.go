@@ -1,14 +1,14 @@
 package main
 
 import (
-	"github.com/kabanasy1/app/internal/app"
+	"github.com/kabanasy1/app/internal/application"
 	log "github.com/sirupsen/logrus"
 )
 
 func main() {
-	server := app.NewServer()
+	server := application.NewServer()
 
-	err := app.RunServer(server)
+	err := application.RunServer(server)
 	if err != nil {
 		log.Fatal(err)
 	}
