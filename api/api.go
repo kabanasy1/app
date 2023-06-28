@@ -2,7 +2,7 @@ package api
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/kabanasy1/internal/handlers"
+	"github.com/kabanasy1/app/handlers"
 )
 
 func Router() *mux.Router {
