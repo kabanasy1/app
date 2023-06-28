@@ -14,13 +14,13 @@ type Server struct {
 
 func NewServer() *Server {
 
-	h := handlers.NewDefaultHandler()
+	handler := handlers.NewDefaultHandler()
 
-	s := new(Server)
-	s.srv.Addr = ":8080"
-	s.srv.Handler = api.Router(h)
+	server := new(Server)
+	server.srv.Addr = ":8080"
+	server.srv.Handler = api.Router(handler)
 
-	return s
+	return server
 }
 
 func RunServer(s *Server) error {
