@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/kabanasy1/app/api"
+	"github.com/kabanasy1/app/internal/application/handlers"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -15,7 +16,7 @@ func NewServer() *Server {
 	server := &Server{
 		srv: &http.Server{
 			Addr:    ":8080",
-			Handler: api.Router(),
+			Handler: api.Router(handlers.DefaultHandler()),
 		},
 	}
 	return server
