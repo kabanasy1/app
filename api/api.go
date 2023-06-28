@@ -1,14 +1,13 @@
 package api
 
 import (
-	"net/http"
-
 	"github.com/gorilla/mux"
+	"github.com/kabanasy1/app/internal/handlers"
 )
 
-func Router(h http.Handler) *mux.Router {
+func Router(h *handlers.DefaultHandler) *mux.Router {
 	r := mux.NewRouter()
 
-	r.HandleFunc("/", h).Methods("GET", "POST")
+	r.HandleFunc("/", h.Handle).Methods("GET", "POST")
 	return r
 }

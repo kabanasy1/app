@@ -13,10 +13,13 @@ type Server struct {
 }
 
 func NewServer() *Server {
+
+	h := handlers.NewDefaultHandler()
+
 	server := &Server{
 		srv: &http.Server{
 			Addr:    ":8080",
-			Handler: api.Router(handlers.DefaultHandler()),
+			Handler: api.Router(h),
 		},
 	}
 	return server
