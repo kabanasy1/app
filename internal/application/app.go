@@ -16,13 +16,11 @@ func NewServer() *Server {
 
 	h := handlers.NewDefaultHandler()
 
-	server := &Server{
-		srv: &http.Server{
-			Addr:    ":8080",
-			Handler: api.Router(h),
-		},
-	}
-	return server
+	s := new(Server)
+	s.srv.Addr = ":8080"
+	s.srv.Handler = api.Router(h)
+
+	return s
 }
 
 func RunServer(s *Server) error {
