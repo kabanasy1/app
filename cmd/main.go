@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/kabanasy1/app/application"
+	"github.com/kabanasy1/app/internal/application"
 	log "github.com/sirupsen/logrus"
 )
 
