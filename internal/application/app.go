@@ -15,10 +15,11 @@ type Server struct {
 func NewServer() *Server {
 
 	handler := handlers.NewDefaultHandler()
+	router := api.Router(handler)
 
 	server := new(Server)
 	server.srv.Addr = ":8080"
-	server.srv.Handler = api.Router(handler)
+	server.srv.Handler = router
 
 	return server
 }
