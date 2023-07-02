@@ -13,18 +13,19 @@ type Server struct {
 }
 
 func NewServer() *Server {
-
-	handler := handlers.NewDefaultHandler()
-	router := api.Router(handler)
-
 	server := new(Server)
-	server.srv.Addr = ":8080"
-	server.srv.Handler = router
-
 	return server
 }
 
 func RunServer(s *Server) error {
+	handler := handlers.NewDefaultHandler()
+	router := api.Router(handler)
+
+	s.srv = &http.Server{
+		Addr:    ":8080",
+		Handler: router,
+	}
+
 	log.Println("Server started")
 
 	err := s.srv.ListenAndServe()
