@@ -21,10 +21,9 @@ func NewServer(conf config.Config) *Server {
 }
 
 func RunServer(s *Server) error {
-	handler := handlers.NewDefaultHandler()
 	userHandler := handlers.NewUserHandler()
 	carHandler := handlers.NewCarHandler()
-	router := api.Router(handler, userHandler, carHandler)
+	router := api.Router(userHandler, carHandler)
 
 	s.srv = &http.Server{
 		Addr:    s.cfg.WebAddr + ":" + s.cfg.WebPort,

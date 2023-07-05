@@ -1,8 +1,9 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
+
+	log "github.com/sirupsen/logrus"
 )
 
 type CarHandlers struct {
@@ -10,11 +11,34 @@ type CarHandlers struct {
 }
 
 func NewCarHandler() *CarHandlers {
-	u := new(CarHandlers)
-	u.message = "Hello from car handler"
-	return u
+	c := new(CarHandlers)
+	c.message = "Hello from car handler"
+	return c
 }
 
-func (u *CarHandlers) DefaultCarHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, u.message)
+func (c *CarHandlers) Create(w http.ResponseWriter, r *http.Request) {
+	log.Infof("Incoming request: client: %s method: %s uri: %s user-agent: %s", r.RemoteAddr, r.Method, r.RequestURI, r.UserAgent())
+	m := map[string]interface{}{
+		"result": "OK",
+		"data":   "TODO: the method Create car will be here",
+	}
+	WrapOK(w, m)
+}
+
+func (c *CarHandlers) List(w http.ResponseWriter, r *http.Request) {
+	log.Infof("Incoming request: client: %s method: %s uri: %s user-agent: %s", r.RemoteAddr, r.Method, r.RequestURI, r.UserAgent())
+	m := map[string]interface{}{
+		"result": "OK",
+		"data":   "TODO: the method List car will be here",
+	}
+	WrapOK(w, m)
+}
+
+func (c *CarHandlers) Find(w http.ResponseWriter, r *http.Request) {
+	log.Infof("Incoming request: client: %s method: %s uri: %s user-agent: %s", r.RemoteAddr, r.Method, r.RequestURI, r.UserAgent())
+	m := map[string]interface{}{
+		"result": "OK",
+		"data":   "TODO: the method Find car will be here",
+	}
+	WrapOK(w, m)
 }
