@@ -1,8 +1,10 @@
 package handlers
 
 import (
+	"encoding/json"
 	"net/http"
 
+	"github.com/kabanasy1/app/internal/application/models"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -18,9 +20,17 @@ func NewUserHandler() *UserHandlers {
 
 func (u *UserHandlers) Create(w http.ResponseWriter, r *http.Request) {
 	log.Infof("Incoming request: client: %s method: %s uri: %s user-agent: %s", r.RemoteAddr, r.Method, r.RequestURI, r.UserAgent())
+	var user models.User
+
+	err := json.NewDecoder(r.Body).Decode(&user)
+	if err != nil {
+		WrapError(w, err)
+		return
+	}
+
 	m := map[string]interface{}{
 		"result": "OK",
-		"data":   "TODO: the method Create user will be here",
+		"data":   user,
 	}
 	WrapOK(w, m)
 }

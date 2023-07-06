@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/kabanasy1/app/internal/application"
-	"github.com/kabanasy1/app/internal/application/config"
+	"github.com/kabanasy1/app/internal/config"
 	log "github.com/sirupsen/logrus"
 )
 
