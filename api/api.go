@@ -10,7 +10,7 @@ func Router(u *handlers.UserHandlers, c *handlers.CarHandlers) *mux.Router {
 
 	r.HandleFunc("/api/v1/users/create", u.Create).Methods("POST")
 	r.HandleFunc("/api/v1/users/list", u.List).Methods("GET")
-	r.HandleFunc("/api/v1/users/find", u.Find).Methods("GET")
+	r.HandleFunc("/api/v1/users/find/{id:[0-9]+}", u.Find).Methods("GET")
 
 	r.HandleFunc("/api/v1/cars/create", c.Create).Methods("POST")
 	r.HandleFunc("/api/v1/cars/list", c.List).Methods("GET")
